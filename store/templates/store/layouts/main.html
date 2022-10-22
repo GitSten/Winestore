@@ -16,17 +16,28 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link href="{% static 'css/custom.css' %}" rel="stylesheet"/>
 
+    <link href="{% static 'css/owl.carousel.min.css' %}" rel="stylesheet"/>
+    <link href="{% static 'css/owl.theme.default.min.css' %}" rel="stylesheet"/>
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+
     {% comment %} ALertify JS {% endcomment %}
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
     <!-- Default theme -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+
+    {% comment %}Livechati jaoks {% endcomment %}
+    {% comment %}<meta name="referrer" content="no-refferer-when-downgrade" />{% endcomment %}
+
     <style>
       *{
           font-family: 'Roboto', sans-serif;
+
       }
 
         a {
           text-decoration: none;
+          color: #000;
 
       }
       .product-viewtag {
@@ -59,14 +70,61 @@
     {% block content %}
 
     {% endblock content %}
-
+    {% comment %}WHATSAPPI WIDGET{% endcomment %}
+   {% comment %} <a href="https://wa.me/+37215551234567?text=I'm%20interested%20in%20your%20product%20for%20sale"target="_blank" class="whatsapp-chat">
+        <img src="{% static '/whatsapp.png' %}"  alt="whatsapp" width="70px" />
+    </a>{% endcomment %}
     {% comment %} Jquery   {% endcomment %}
     <script src="{% static '/js/jquery-3.6.0.js' %}"> </script>
     {% comment %} custom-js {% endcomment %}
     <script src="{% static '/js/custom.js' %}"> </script>
+    <script src="{% static '/js/owl.carousel.min.js' %}"> </script>
+
+
+
 
     {% comment %} Bootstrap   {% endcomment %}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <script>
+      var availableTags = [];
+
+      $.ajax({
+          method: 'GET',
+          url: "/product-list",
+          success: function (response){
+              startAutocomplete(response);
+          }
+      })
+
+
+    function startAutocomplete(availableTags)
+    {
+    $( "#searchproducts" ).autocomplete({
+      source: availableTags
+    });
+
+    }
+
+  </script>
+
+    {% comment %} Livechati jaoks
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/634c3daeb0d6371309c9d2a5/1gfgt1t4u';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <!--End of Tawk.to Script-->
+      {% endcomment %}
+
     {% comment %} Alertify JS {% endcomment %}
     <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
     <script>

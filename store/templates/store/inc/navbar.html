@@ -1,10 +1,23 @@
 <nav class="navbar navbar-expand-lg bg-light">
   <div class="container">
     <a class="navbar-brand" href="/">E-Wine-Store</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="py-5 collapse navbar-collapse" id="navbarSupportedContent">
+
+
+      <div class="search-bar">
+       <form action="{% url 'searchproduct' %}" method="POST">
+           {% csrf_token %}
+           <div class="input-group ">
+            <input type="search" required class="form-control" name="productsearch" id="searchproducts" placeholder="Search products" >
+            <button type="submit" class="input-group-text" > <i class="fa fa-search" ></i> </button>
+           </div>
+        </form>
+      </div>
+
+
+    <div class="py-5 collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
           <a class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %} " aria-current="page" href="{% url 'home' %}"><i class="fa fa-home" style="font-size:20px;color:#941A00"></i>Home</a>
@@ -27,9 +40,9 @@
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
            <i class="fa fa-user-circle" style="font-size:25px;color:#941A00"></i> {{ request.user }}
           </a>
-          <ul class="dropdown-menu">{% comment %}
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>{% endcomment %}
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'myorders' %}">My orders</a></li>
+            {% comment %}<li><a class="dropdown-item" href="#">Another action</a></li{% endcomment %}
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
           </ul>

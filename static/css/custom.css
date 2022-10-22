@@ -12,3 +12,15 @@
 
 
 
+.whatsapp-chat{
+    postion:fixed;
+    bottom: 05% !important;
+    left: 03% !important;
+}
+
+
+.search-bar{
+    width: 30% !important;
+    margin-left:10%;
+}
+
